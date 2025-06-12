@@ -164,3 +164,39 @@
         }
     }
 }
+
+.card-details {
+    justify-content: center;
+
+    img {
+        width: 100%;
+        @media (min-width: 480px) {
+            width: 45%;
+        }
+    }
+    
+    .info {
+        width: 100%;
+        color: black;
+        background-color: rgb(211, 211, 211);
+        border-radius: 12px;
+        padding: 20px;
+
+        @media (min-width: 480px) {
+            width: 45%;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: .7em;
+        }
+        h2 {
+            font-size: 1.7em;
+            font-weight: 500;
+            margin-bottom: .5em;
+        }
+        p {
+            font-size: 1.4em;
+        }
+    }
+}
