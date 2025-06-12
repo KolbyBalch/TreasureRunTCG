@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Card } from 'components/card';
-import { ContextAlert } from 'components/context-alert';
 import { Markdown } from 'components/markdown';
 import { RandomQuote } from 'components/random-quote';
 import { getNetlifyContext } from 'utils';
@@ -27,11 +26,10 @@ export default function Page() {
     return (
         <div className="flex flex-col gap-12 sm:gap-16">
             <section>
-                <ContextAlert className="mb-6" />
-                <h1 className="mb-4">Netlify Platform Starter - Next.js</h1>
-                <p className="mb-6 text-lg">Get started with Next.js and Netlify in seconds.</p>
-                <Link href="https://docs.netlify.com/frameworks/next-js/overview/" className="btn btn-lg sm:min-w-64">
-                    Read the Docs
+                <h1 className="mb-4">Treasure Run</h1>
+                <p className="mb-6 text-lg">A dungeon building Trading Card Game</p>
+                <Link href="/How-to-Play" className="btn btn-lg sm:min-w-64">
+                    How to Play
                 </Link>
             </section>
             {!!ctx && (

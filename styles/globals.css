@@ -155,3 +155,12 @@
         }
     }
 }
+
+.card-list {
+    .card {
+        max-width: 100%;
+        @media (min-width: 480px) {
+            max-width: 23%
+        }
+    }
+}
