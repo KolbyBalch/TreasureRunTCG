@@ -31,7 +31,7 @@ export default function Page() {
 
 
     if (isLoading) return <p>Loading...</p>
-    if (!cards) return <p>Sorry! We can't find the cards you are looking for... Check back later.</p>
+    if (!cards) return <p>{"Sorry! We can't find the cards you are looking for... Check back later."}</p>
 
     if (!!id) return (
         <div className="flex flex-col gap-12 sm:gap-16">
