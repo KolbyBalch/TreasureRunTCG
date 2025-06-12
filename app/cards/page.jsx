@@ -39,6 +39,7 @@ export default function Page() {
                                 height="1125" 
                                 src={`https://raw.githubusercontent.com/KolbyBalch/TreasureRun/refs/heads/main/assets/cardFronts/alp_${String(card.id).padStart(3, '0')}.png`}
                                 style={{borderRadius: "12px"}}
+                                alt={`Image of ${card.name}.`}
                             />
                         </Link>
                     </div>
