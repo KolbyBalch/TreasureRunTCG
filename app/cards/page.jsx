@@ -12,7 +12,7 @@ export default function Page() {
     const id = Number(searchParams.get('id'))
 
     const [cards, setCards] = useState(null)
-    const [selectedCard, setSelectedCard] = useState(null)
+    const [filteredCards, setFilteredCards] = useState(null)
     const [isLoading, setLoading] = useState(true)
     
     useEffect(() => {
@@ -21,36 +21,30 @@ export default function Page() {
 
     useEffect(() => {
         if (cards?.length > 0) {
-            setSelectedCard(cards?.filter(card => {
-                console.log(card.id, id);
-                return card.id === id})[0])
+            setFilteredCards(cards?.filter(card => {
+                return card.id === id}))
         }
     }, [id, cards])
-
-    useEffect(() => {
-        console.log(selectedCard)
-    }, [selectedCard])
-
 
     if (isLoading) return <p>Loading...</p>
     if (!cards) return <p>{"Sorry! We can't find the cards you are looking for... Check back later."}</p>
 
-    if (!!id) return (
+    if (filteredCards?.length === 1) return (
         <div className="flex flex-col gap-12 sm:gap-16">
             <Link href='/cards'>Back</Link>
             <div className="card-details flex flex-wrap gap-x-4 gap-y-1">
                 <Image 
                     width="825" 
                     height="1125" 
-                    src={`https://raw.githubusercontent.com/KolbyBalch/TreasureRun/refs/heads/main/assets/cardFronts/alp_${String(selectedCard?.id).padStart(3, '0')}.png`}
+                    src={`https://raw.githubusercontent.com/KolbyBalch/TreasureRun/refs/heads/main/assets/cardFronts/alp_${String(filteredCards[0]?.id).padStart(3, '0')}.png`}
                     style={{borderRadius: "12px"}}
-                    alt={`Image of ${selectedCard?.name}.`}
+                    alt={`Image of ${filteredCards[0]?.name}.`}
                 />
                 <div className="info">
-                    <h1>{selectedCard?.name}</h1>
-                    <h2>{selectedCard?.rarity}</h2>
-                    <h2>{selectedCard?.type}{selectedCard?.subtype ? ` - ${selectedCard?.subtype}` : ''}</h2>
-                    <p>{selectedCard?.rulesText}</p>
+                    <h1>{filteredCards[0]?.name}</h1>
+                    <h2>{filteredCards[0]?.rarity}</h2>
+                    <h2>{filteredCards[0]?.type}{filteredCards[0]?.subtype ? ` - ${filteredCards[0]?.subtype}` : ''}</h2>
+                    <p>{filteredCards[0]?.rulesText}</p>
                 </div>
             </div>
         </div>
