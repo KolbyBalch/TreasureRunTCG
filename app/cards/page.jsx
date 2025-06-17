@@ -10,9 +10,9 @@ import { getCards } from 'app/actions';
 export default function Page() {
     const searchParams = useSearchParams()
     const id = Number(searchParams.get('id'));
-    const color = searchParams.get('c');
-    const types = searchParams.get('types');
-    const name = searchParams.get('name');
+    const color = searchParams.get('c')?.toUpperCase();
+    const types = searchParams.get('t')?.toUpperCase();
+    const name = searchParams.get('n')?.toUpperCase();
 
     const [cards, setCards] = useState(null)
     const [filteredCards, setFilteredCards] = useState(null)
@@ -26,7 +26,11 @@ export default function Page() {
         if (cards?.length > 0) {
             setFilteredCards(cards?.filter(card => 
                 id ? card.id === id : true).filter(card => 
-                color ? color.includes(card.colors[0].toUpperCase()) : true))
+                color ? color.includes(card.colors[0].toUpperCase()) : true).filter(card => 
+                types ? types.includes(card.type?.toUpperCase()) || 
+                (card.subtype && types.includes(card.subtype?.toUpperCase())) : true).filter(card => 
+                name ? (name.includes(card.name.toUpperCase()) || card.name.toUpperCase().includes(name)) : true)
+            )
         }
     }, [id, cards])
 
@@ -35,11 +39,11 @@ export default function Page() {
     }, [filteredCards])
 
     if (isLoading) return <p>Loading...</p>
-    if (!cards) return <p>{"Sorry! We can't find the cards you are looking for... Check back later."}</p>
+    if (!filteredCards) return <p>{"Sorry! We can't find the cards you are looking for..."}</p>
 
     if (filteredCards?.length === 1) return (
         <div className="flex flex-col gap-12 sm:gap-16">
-            <Link href='/cards'>Back</Link>
+            <Link href='/cards' onClick={() => setFilteredCards(cards)}>All cards</Link>
             <div className="card-details flex flex-wrap gap-x-4 gap-y-1">
                 <Image 
                     width="825" 

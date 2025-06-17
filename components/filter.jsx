@@ -11,21 +11,28 @@ export function Filter() {
 
         for (const entry of formdata.entries()) {
             if (entry[0] === "color") {
-                colorsFilter += entry[1];
+                colorsFilter += entry[1].replace(/[^A-Z0-9]/ig, "");;
             } else if (entry[0] === "types") {
-                typesFilter += entry[1];
+                typesFilter += entry[1].replace(/[^A-Z0-9]/ig, "");;
             } else if (entry[0] === "id") {
-                idFilter += entry[1];
+                idFilter += entry[1].replace(/[^A-Z0-9]/ig, "");;
             } else if (entry[0] === "name") {
-                nameFilter += entry[1];
+                nameFilter += entry[1].replace(/[^A-Z0-9]/ig, "");;
             }
         }
 
-        const searchParams = `?${colorsFilter !== '' ? `c=${colorsFilter}` : ``}`;
-        const typeParams = `?${typesFilter !== '' ? `c=${typesFilter}` : ``}`;
-        const idParams = `?${idFilter !== '' ? `c=${idFilter}` : ``}`;
-        const nameParams = `?${nameFilter !== '' ? `c=${nameFilter}` : ``}`;
-        redirect(`/cards${searchParams}`)
+        const colorParams = `${colorsFilter !== '' ? `c=${colorsFilter}` : ``}`;
+        const typeParams = `${typesFilter !== '' ? `t=${typesFilter}` : ``}`;
+        const idParams = `${idFilter !== '' ? `id=${idFilter}` : ``}`;
+        const nameParams = `${nameFilter !== '' ? `n=${nameFilter}` : ``}`;
+
+        const searchParams = [colorParams, typeParams, idParams, nameParams].filter(param => param !== '').join('&');
+
+        redirect(`/cards?${searchParams}`)
+    }
+
+    async function handleClear() {
+        redirect('/cards')
     }
 
     return (
@@ -62,10 +69,15 @@ export function Filter() {
                         </div>
                         <div className="filter-section">
                             <span>By Type</span>
+                            <input name="types" type="text"/>
+                        </div>
+                        <div className="filter-section">
+                            <span>By Name</span>
+                            <input name="name" type="text"/>
                         </div>
                         <div className="button-section">
                             <button type="submit">Search</button>
-                            <button>Clear</button>
+                            <button onClick={handleClear}>Clear</button>
                         </div>
                     </Form>
                 </AccordionItem>
