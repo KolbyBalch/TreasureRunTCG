@@ -9,7 +9,10 @@ import { getCards } from 'app/actions';
 
 export default function Page() {
     const searchParams = useSearchParams()
-    const id = Number(searchParams.get('id'))
+    const id = Number(searchParams.get('id'));
+    const color = searchParams.get('c');
+    const types = searchParams.get('types');
+    const name = searchParams.get('name');
 
     const [cards, setCards] = useState(null)
     const [filteredCards, setFilteredCards] = useState(null)
@@ -21,10 +24,15 @@ export default function Page() {
 
     useEffect(() => {
         if (cards?.length > 0) {
-            setFilteredCards(cards?.filter(card => {
-                return card.id === id}))
+            setFilteredCards(cards?.filter(card => 
+                id ? card.id === id : true).filter(card => 
+                color ? color.includes(card.colors[0].toUpperCase()) : true))
         }
     }, [id, cards])
+
+    useEffect(() => {
+        console.log(filteredCards)
+    }, [filteredCards])
 
     if (isLoading) return <p>Loading...</p>
     if (!cards) return <p>{"Sorry! We can't find the cards you are looking for... Check back later."}</p>
@@ -55,7 +63,7 @@ export default function Page() {
             <h1>Explore Cards</h1>
             <Filter />
             <div className="card-list flex flex-wrap gap-x-4 gap-y-1">
-                {cards.map((card, index) => (
+                {filteredCards?.map((card, index) => (
                     <div key={index} className="card">
                         <Link href={`/cards?id=${card.id}`} className="inline-flex px-1.5 py-1 sm:px-3 sm:py-2">
                             <Image 
