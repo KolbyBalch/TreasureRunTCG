@@ -9,9 +9,15 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@heroui/accordion": "^2.2.18",
+        "@heroui/form": "^2.1.20",
+        "@heroui/system": "^2.4.17",
+        "@heroui/theme": "^2.4.17",
         "@netlify/blobs": "^8.2.0",
         "blobshape": "^1.0.0",
         "bright": "^0.8.5",
+        "framer-motion": "^12.18.1",
+        "googleapis": "^150.0.1",
         "markdown-to-jsx": "^7.4.5",
         "next": "^15.3.3",
         "react": "18.3.1",

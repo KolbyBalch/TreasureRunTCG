@@ -1,7 +1,4 @@
 import Link from 'next/link';
-import { getNetlifyContext } from 'utils';
-
-const ctx = getNetlifyContext();
 
 export default function Page() {
     return (

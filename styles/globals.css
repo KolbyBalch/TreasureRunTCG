@@ -157,10 +157,76 @@
 }
 
 .card-list {
+    justify-content: center;
     .card {
         max-width: 100%;
         @media (min-width: 480px) {
             max-width: 23%
+        }
+    }
+}
+
+.search-bar {
+    width: 100%;
+    background-color: rgba(107, 107, 107, 0.692);
+    padding: 10px;
+    border-radius: 12px;
+
+    form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .filter-section {
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: flex-start;
+            margin-top: 8px;
+            width: 100%;
+            @media (min-width: 480px) {
+                max-width: 25%;
+            }
+
+            span {
+                font-weight: bold;
+            }
+
+            label {
+                display: inline;
+                input {
+                    margin-right: 4px;
+                }
+            }
+        }
+        .button-section {
+            width: 100%;
+            
+            button {
+                background-color: black;
+                padding: 4px;
+                border-radius: 12px;
+                width: 48%;
+                margin: 1%;
+                
+                @media (min-width: 480px) {
+                    max-width: 25%;
+                    float: right;
+                }
+            }
+        }
+    }
+
+    div {
+        div {
+            h2 {
+                button {
+                    justify-content: space-between;
+                    svg {
+                        margin-right: 12px;
+                    }
+                }
+            }
         }
     }
 }

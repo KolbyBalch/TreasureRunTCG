@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from "react";
 import { useSearchParams } from 'next/navigation';
+import { Filter } from '../../components/filter'
+import { getCards } from 'app/actions';
 
 export default function Page() {
     const searchParams = useSearchParams()
@@ -14,20 +16,20 @@ export default function Page() {
     const [isLoading, setLoading] = useState(true)
     
     useEffect(() => {
-        fetch("https://api.apispreadsheets.com/data/SyAHYAz2vsEj2jUc/")
-        .then((res) => res.json())
-        .then((data) => {
-            setCards(data)
-            setLoading(false)
-        })
-        .catch(err => console.log(err))
+        getCards().then(data => setCards(data.data), setLoading(false))
     }, [])
 
     useEffect(() => {
-        if (cards?.data.length > 0) {
-            setSelectedCard(cards?.data.filter(card => card.id === id)[0])
+        if (cards?.length > 0) {
+            setSelectedCard(cards?.filter(card => {
+                console.log(card.id, id);
+                return card.id === id})[0])
         }
     }, [id, cards])
+
+    useEffect(() => {
+        console.log(selectedCard)
+    }, [selectedCard])
 
 
     if (isLoading) return <p>Loading...</p>
@@ -57,8 +59,9 @@ export default function Page() {
     return (
         <div className="flex flex-col gap-12 sm:gap-16">
             <h1>Explore Cards</h1>
+            <Filter />
             <div className="card-list flex flex-wrap gap-x-4 gap-y-1">
-                {cards.data.map((card, index) => (
+                {cards.map((card, index) => (
                     <div key={index} className="card">
                         <Link href={`/cards?id=${card.id}`} className="inline-flex px-1.5 py-1 sm:px-3 sm:py-2">
                             <Image 
