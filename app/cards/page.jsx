@@ -16,7 +16,7 @@ export default function Page() {
     const [isLoading, setLoading] = useState(true)
     
     useEffect(() => {
-        getCards().then(data => setCards(data.data), setLoading(false))
+        getCards().then(data => setCards(data.data)).catch(e => console.log(e)).finally(() => setLoading(false));
     }, [])
 
     useEffect(() => {
