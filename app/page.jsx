@@ -6,8 +6,11 @@ export default function Page() {
             <section>
                 <h1 className="mb-4">Treasure Run</h1>
                 <p className="mb-6 text-lg">A dungeon building Trading Card Game</p>
-                <Link href="/How-to-Play" className="btn btn-lg sm:min-w-64">
+                <Link href="/How-to-Play" className="btn btn-lg w-full mb-4 sm:w-1/4 sm:min-w-64 sm:mr-4">
                     How to Play
+                </Link>
+                <Link href="/cards" className="btn btn-lg w-full sm:w-1/4 sm:min-w-64">
+                    Explore the Alpha Set
                 </Link>
             </section>
         </div>

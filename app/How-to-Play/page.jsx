@@ -53,6 +53,12 @@ export default function Page() {
                     The condition must be met in order to play the Reflex, and it may not be played at any other time.
                 </p>
             </section>
+            <section className="how-to-play">
+                <h2>Ending the Game</h2>
+                <p>At the end of your turn, if you are in the Dungeon Entrance, you may choose to Escape.</p>
+                <p>The first player to Escape with 20 or more treasure wins the game.</p>
+                <p>If all players escape with less than 20 treasure, the player with the most treasure wins instead.</p>
+            </section>
         </div>
     );
 }
