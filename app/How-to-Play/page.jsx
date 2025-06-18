@@ -11,6 +11,13 @@ export default function Page() {
                 <p>Treasure Run is played with 2-4 people, each taking turns playing items, equipment, and rooms from their hand to find treasure and escape the dungeon.</p>
             </section>
             <section className="how-to-play">
+                <h2>Setup</h2>
+                <p>Place the Dungeon Entrance card in the center of the playspace, equidistant from all players.</p>
+                <p>Decide upon turn order by rolling a d20. The player who rolls the highest goes first, with the turn order moving clockwise from them.</p>
+                <p>Each player shuffles their deck and draws 7 cards. Each player may mulligan once by reshuffling their deck and drawing 7 new cards.</p>
+                <p>The player who rolled the highest then starts their turn. In a 1v1 setting, the player who goes first skips their draw phase during their first turn.</p>
+            </section>
+            <section className="how-to-play">
                 <h2>On your turn</h2>
                 <p>Each turn is broken up into 3 phases: draw, main, and end.</p>
                 <h3>Draw phase:</h3>
