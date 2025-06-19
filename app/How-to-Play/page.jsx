@@ -27,7 +27,7 @@ export default function Page() {
                 <p>
                     By default, you may move <strong>Once</strong> during your main phase, though many cards will increase how many times you may move.
                     Any time you would move down an unexplored path (meaning blank space on the table), you must play a room card from your hand.
-                    When you play a room card, each opponent, in turn order, has the opportunity to trap it. If no traps are played, or you succeed the trap roll from a played trap, you find treasure equal to the room's <strong>Explore</strong> value.
+                    When you play a room card, each opponent, in turn order, has the opportunity to trap it. If no traps are played, or you succeed the trap roll from a played trap, you find treasure equal to the room&apos;s <strong>Explore</strong> value.
                 </p>
                 <h3>End phase:</h3>
                 <p>Your end phase is broken up into a few steps:</p>
