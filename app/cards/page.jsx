@@ -29,8 +29,8 @@ export default function Page() {
                 color ? color.includes(card.colors[0].toUpperCase()) : true).filter(card => 
                 types ? types.includes(card.type?.toUpperCase()) || 
                 (card.subtype && types.includes(card.subtype?.toUpperCase())) : true).filter(card => 
-                name ? (name.replace(' ', '').includes(card.name.toUpperCase()) || 
-                card.name.toUpperCase().includes(name.replace(' ', ''))) : true)
+                name ? (name.replace(/[^A-Z0-9]/ig, "").includes(card.name.toUpperCase()) || 
+                card.name.toUpperCase().includes(name.replace(/[^A-Z0-9]/ig, ""))) : true)
             )
         }
     }, [id, cards])
